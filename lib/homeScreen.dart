@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_import
 
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 // ignore: implementation_imports
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final nameController = TextEditingController();
   int _index = 0;
   PageController pageController = PageController();
 
@@ -35,13 +37,27 @@ class _HomeScreenState extends State<HomeScreen> {
             style: TextStyle(fontSize: 21, fontWeight: FontWeight.w600),
           ),
           actions: [
-            IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  Icons.search,
-                  color: Colors.white,
-                  size: 25,
-                )),
+            AnimSearchBar(
+              width: 300,
+              textController: nameController,
+              color: Color(0xff819ff3),
+              boxShadow: false,
+              searchIconColor: Colors.white,
+              autoFocus: true,
+              onSuffixTap: () {
+                setState(() {
+                  nameController.clear();
+                });
+              },
+              onSubmitted: (value) {},
+            ),
+            // IconButton(
+            //     onPressed: () {},
+            //     icon: Icon(
+            //       Icons.search,
+            //       color: Colors.white,
+            //       size: 25,
+            //     )),
             PopupMenuButton(
                 onSelected: (value) {
                   print(value);
@@ -94,7 +110,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
             child: GNav(
               curve: Curves.fastOutSlowIn,
-              duration: Duration(milliseconds: 250),
+              duration: Duration(milliseconds: 350),
               backgroundColor: Color(0xff819ff3),
               tabBackgroundColor: Color.fromARGB(255, 104, 129, 199),
               padding: EdgeInsets.all(16),
