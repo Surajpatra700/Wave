@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:wave_chat/customUi/CustomCard.dart';
+import 'package:wave_chat/model/chatModel.dart';
+import 'package:wave_chat/screens/selectContact.dart';
 
 class Chatpage extends StatefulWidget {
   const Chatpage({super.key});
@@ -9,15 +12,38 @@ class Chatpage extends StatefulWidget {
 }
 
 class _ChatpageState extends State<Chatpage> {
+  List<ChatModel> chats = [
+    ChatModel(
+      name: "Suraj Patra",
+      isGroup: false,
+      currentMessage: "Hi EveryOne",
+      time: "4:00",
+      icon: "person.svg",
+    ),
+    ChatModel(
+      name: "Sumit Kumar pattnaik",
+      isGroup: false,
+      currentMessage: "Hi EveryOne",
+      time: "4:30",
+      icon: "person.svg",
+    ),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          CustomCard(),
-        ],
+      body: ListView.builder(
+        itemCount: chats.length,
+        itemBuilder: (context, index) => CustomCard(
+          chatModel: chats[index],
+        ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.chat),backgroundColor: Color(0xff819ff3),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.to(Selectcontact());
+        },
+        child: Icon(Icons.chat),
+        backgroundColor: Color(0xff819ff3),
+      ),
     );
   }
 }

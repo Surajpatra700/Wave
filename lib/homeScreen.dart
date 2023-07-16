@@ -42,8 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
               textController: nameController,
               color: Color(0xff819ff3),
               boxShadow: false,
+              animationDurationInMilli: 300,
               searchIconColor: Colors.white,
-              autoFocus: true,
+              //autoFocus: true,
               onSuffixTap: () {
                 setState(() {
                   nameController.clear();
