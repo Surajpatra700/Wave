@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:wave_chat/page/chatpage.dart';
+import 'package:wave_chat/screens/cameraPage.dart';
+import 'package:wave_chat/screens/cameraScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List screens = [
     Chatpage(),
-    Center(child: Text("Search")),
+    CameraScreen(),
     Center(child: Text("Status")),
     Center(child: Text("Calls")),
   ];
@@ -126,8 +128,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   iconColor: Colors.white70,
                 ),
                 GButton(
-                  icon: Icons.search,
-                  text: 'search',
+                  icon: Icons.camera,
+                  text: 'camera',
                   iconActiveColor: Colors.white,
                   iconColor: Colors.white70,
                 ),
