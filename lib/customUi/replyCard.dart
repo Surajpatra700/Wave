@@ -5,26 +5,26 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:wave_chat/colors/colors.dart';
 
-class OwnMessageCard extends StatefulWidget {
-  const OwnMessageCard({super.key});
+class ReplyCard extends StatefulWidget {
+  const ReplyCard({super.key});
 
   @override
-  State<OwnMessageCard> createState() => _OwnMessageCardState();
+  State<ReplyCard> createState() => _ReplyCardState();
 }
 
-class _OwnMessageCardState extends State<OwnMessageCard> {
+class _ReplyCardState extends State<ReplyCard> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerRight,
+      alignment: Alignment.centerLeft,
       child: ConstrainedBox(constraints: BoxConstraints(
         maxWidth: MediaQuery.of(context).size.width -70,
       ),
       child: Card(
         elevation: 1,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        color: Color.fromARGB(255, 142, 199, 245),
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        //color: AppColor.primaryColor,
+        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: Stack(
           children: [
             Padding(
@@ -34,7 +34,7 @@ class _OwnMessageCardState extends State<OwnMessageCard> {
                 top: 5,
                 bottom: 20,
               ),
-              child: Text("Hey there am using Wave can you please have a communication with me",style: TextStyle(fontSize: 15.5),),
+              child: Text("Hey there am using Wave",style: TextStyle(fontSize: 15.5),),
             ),
             Positioned(
               bottom: 2,
@@ -43,10 +43,10 @@ class _OwnMessageCardState extends State<OwnMessageCard> {
               children: [
                 Text("20:58",style: TextStyle(fontSize: 12),),
                 
-                Padding(
-                  padding: const EdgeInsets.only(left: 4.0),
-                  child: Icon(Icons.done_all,color: Color.fromARGB(255, 2, 105, 6),),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(left: 4.0),
+                //   child: Icon(Icons.done_all,color: Color.fromARGB(255, 2, 105, 6),),
+                // ),
               ],
             ))
           ],

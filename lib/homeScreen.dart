@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 // ignore: implementation_imports
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:wave_chat/model/chatModel.dart';
 import 'package:wave_chat/page/chatpage.dart';
 import 'package:wave_chat/screens/cameraPage.dart';
 import 'package:wave_chat/screens/cameraScreen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+  //final List<ChatModel> chatmodels;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -20,6 +22,14 @@ class _HomeScreenState extends State<HomeScreen> {
   final nameController = TextEditingController();
   int _index = 0;
   PageController pageController = PageController();
+  //List<ChatModel>? _chatmodel;
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   _chatmodel = widget.chatmodels;
+  // }
 
   List screens = [
     Chatpage(),

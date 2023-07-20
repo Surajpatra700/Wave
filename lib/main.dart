@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wave_chat/homeScreen.dart';
 import 'package:wave_chat/screens/cameraScreen.dart';
+import 'package:wave_chat/screens/loginScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
-  runApp(const MyApp());}
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Color(0xff819ff3),
         //secondaryHeaderColor: Color(0xffb06ab3),
+        //android:usesCleartextTraffic="true">       
+        
         // b06ab3
       ),
       home: HomeScreen(),
