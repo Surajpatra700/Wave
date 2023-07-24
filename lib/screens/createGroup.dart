@@ -86,7 +86,7 @@ class _CreateGroupState extends State<CreateGroup> {
               itemBuilder: (context, index) {
                 if (index == 0) {
                   return Container(
-                    height: group.length > 0 ? 90 : 10,
+                    height: (group.length > 0) ? 90 : 10,
                   );
                 }
                 return InkWell(

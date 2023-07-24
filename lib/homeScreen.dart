@@ -12,7 +12,7 @@ import 'package:wave_chat/screens/cameraScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
-  //final List<ChatModel> chatmodels;
+  // final List<ChatModel> chatmodels;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -22,13 +22,13 @@ class _HomeScreenState extends State<HomeScreen> {
   final nameController = TextEditingController();
   int _index = 0;
   PageController pageController = PageController();
+  late List<ChatModel> _chatmodels;
   //List<ChatModel>? _chatmodel;
 
   // @override
   // void initState() {
-  //   // TODO: implement initState
   //   super.initState();
-  //   _chatmodel = widget.chatmodels;
+  //   _chatmodels = widget.chatmodels;
   // }
 
   List screens = [
@@ -37,6 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Center(child: Text("Status")),
     Center(child: Text("Calls")),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

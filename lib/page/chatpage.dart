@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wave_chat/customUi/CustomCard.dart';
 import 'package:wave_chat/model/chatModel.dart';
-import 'package:wave_chat/screens/loginScreen.dart';
+import 'package:wave_chat/screens/signUpScreen.dart';
 import 'package:wave_chat/screens/selectContact.dart';
 
 class Chatpage extends StatefulWidget {
-  const Chatpage({super.key});
-  //final List<ChatModel> chatmodel;
+  Chatpage({super.key});
+  // final List<ChatModel> chatmodel;
 
   @override
   State<Chatpage> createState() => _ChatpageState();
 }
 
 class _ChatpageState extends State<Chatpage> {
-  final LoginScreen login = LoginScreen();
+  //final LoginScreen login = LoginScreen();
 
   List<ChatModel> chats = [
     ChatModel(

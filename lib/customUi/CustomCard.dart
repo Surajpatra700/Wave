@@ -7,6 +7,7 @@ class CustomCard extends StatefulWidget {
   CustomCard({super.key, required this.chatModel});
   final ChatModel chatModel;
 
+
   @override
   State<CustomCard> createState() => _CustomCardState();
 }
@@ -17,14 +18,20 @@ class _CustomCardState extends State<CustomCard> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context)=> IndivisualPage(chatModel: widget.chatModel)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    IndivisualPage(chatModel: widget.chatModel)));
       },
       child: Column(
         children: [
           ListTile(
             leading: CircleAvatar(
               radius: 30,
-              child: SvgPicture.asset(widget.chatModel.isGroup==true? "assets/svg/group.svg": "assets/svg/person.svg"),
+              child: SvgPicture.asset(widget.chatModel.isGroup == true
+                  ? "assets/svg/group.svg"
+                  : "assets/svg/person.svg"),
             ),
             title: Text(
               widget.chatModel.name!,
@@ -45,8 +52,10 @@ class _CustomCardState extends State<CustomCard> {
             trailing: Text(widget.chatModel.time!),
           ),
           Padding(
-            padding: EdgeInsets.only(right: 10.0,left: 60),
-            child: Divider(thickness: 1,),
+            padding: EdgeInsets.only(right: 10.0, left: 60),
+            child: Divider(
+              thickness: 1,
+            ),
           ),
         ],
       ),
