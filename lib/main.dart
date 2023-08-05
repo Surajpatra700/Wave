@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wave_chat/managements/bindings/bindings.dart';
 import 'package:wave_chat/managements/dBHelper/mongoDb.dart';
+import 'package:wave_chat/managements/services/splashScreen.dart';
 import 'package:wave_chat/screens/cameraScreen.dart';
-import 'package:wave_chat/screens/signUpScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -29,10 +29,9 @@ class MyApp extends StatelessWidget {
         primaryColor: Color(0xff819ff3),
         //secondaryHeaderColor: Color(0xffb06ab3),
         //android:usesCleartextTraffic="true">
-
         // b06ab3
       ),
-      home: SignUpScreen(),
+      home: SplashScreen(),
     );
   }
 }

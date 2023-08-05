@@ -76,6 +76,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  bool loading = false;
   final auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
@@ -83,6 +84,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: Center(
         child: ElevatedButton(
             onPressed: () async {
+              setState(() {
+                loading = true;
+              });
               GoogleSignIn googleSignIn = GoogleSignIn();
               final user = await googleSignIn.signIn();
               if (user != null) {
@@ -104,14 +108,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   photoUrl: photoUrl,
                 );
                 UserStore.to.saveProfile(userProfile);
-                var userDetail = await MongoDatabase.insert(userProfile);
-                Get.to(HomeScreen());
+                var userDetail =
+                    await MongoDatabase.insert(userProfile).then((value) {
+                  setState(() {
+                    loading = false;
+                  });
+                  Get.to(HomeScreen());
+                }).onError((error, stackTrace) {
+                  setState(() {
+                    loading = false;
+                  });
+                  print(e.toString());
+                });
+
                 // password: x9NA1RxqjlvOSQB8
                 // username: SurajPatra
                 // mongodb+srv://SurajPatra:<password>@cluster0.d3kgitd.mongodb.net/?retryWrites=true&w=majority
               }
             },
-            child: Text("SignIn with google")),
+            child: loading
+                ? CircularProgressIndicator(
+                    color: Colors.white,
+                  )
+                : Text("SignIn with google")),
       ),
     );
   }

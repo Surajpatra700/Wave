@@ -9,6 +9,7 @@ import 'package:wave_chat/model/chatModel.dart';
 import 'package:wave_chat/page/chatpage.dart';
 import 'package:wave_chat/screens/cameraPage.dart';
 import 'package:wave_chat/screens/cameraScreen.dart';
+import 'package:wave_chat/screens/contacts/contactScreen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -34,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
   List screens = [
     Chatpage(),
     CameraScreen(),
-    Center(child: Text("Status")),
+    ContactScreen(),
     Center(child: Text("Calls")),
   ];
 
@@ -146,7 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GButton(
                   icon: Icons.person,
-                  text: 'status',
+                  text: 'contacts',
                   iconActiveColor: Colors.white,
                   iconColor: Colors.white70,
                 ),
