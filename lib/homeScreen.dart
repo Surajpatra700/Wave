@@ -10,10 +10,14 @@ import 'package:wave_chat/page/chatpage.dart';
 import 'package:wave_chat/screens/cameraPage.dart';
 import 'package:wave_chat/screens/cameraScreen.dart';
 import 'package:wave_chat/screens/contacts/contactScreen.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
-  HomeScreen({super.key});
+  // HomeScreen({super.key, required this.chatmodels});
+  HomeScreen({Key? key, required this.chatmodels, required this.sourceChat}) : super(key: key);
   // final List<ChatModel> chatmodels;
+  List<ChatModel> chatmodels;
+  final ChatModel sourceChat;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -23,21 +27,23 @@ class _HomeScreenState extends State<HomeScreen> {
   final nameController = TextEditingController();
   int _index = 0;
   PageController pageController = PageController();
-  late List<ChatModel> _chatmodels;
-  //List<ChatModel>? _chatmodel;
 
+  //List<ChatModel>? _chatmodel;
+  // static List<ChatModel>? model;
   // @override
   // void initState() {
   //   super.initState();
-  //   _chatmodels = widget.chatmodels;
+  //   model = widget.chatmodels;
   // }
 
-  List screens = [
-    Chatpage(),
-    CameraScreen(),
-    ContactScreen(),
-    Center(child: Text("Calls")),
-  ];
+  // List screens = [
+  //   Chatpage(
+  //     chatmodel: model!,
+  //   ),
+  //   CameraScreen(),
+  //   ContactScreen(),
+  //   Center(child: Text("Calls")),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +121,13 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           itemBuilder: (context, position) {
             return Container(
-              child: screens[position],
+              child: position == 0
+                  ? Chatpage(chatmodel: widget.chatmodels, sourceChat: widget.sourceChat,)
+                  : position == 1
+                      ? CameraScreen()
+                      : position == 2
+                          ? ContactScreen()
+                          : Center(child: Text("Calls")),
             );
           }),
       bottomNavigationBar: SafeArea(

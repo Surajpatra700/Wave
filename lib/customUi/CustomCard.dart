@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:socket_io_client/socket_io_client.dart';
 import 'package:wave_chat/indivisualPage.dart';
 import 'package:wave_chat/model/chatModel.dart';
 
 class CustomCard extends StatefulWidget {
-  CustomCard({super.key, required this.chatModel});
+  CustomCard({super.key, required this.chatModel, required this.sourceChat});
   final ChatModel chatModel;
-
+  final ChatModel sourceChat;
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -22,7 +23,7 @@ class _CustomCardState extends State<CustomCard> {
             context,
             MaterialPageRoute(
                 builder: (context) =>
-                    IndivisualPage(chatModel: widget.chatModel)));
+                    IndivisualPage(chatModel: widget.chatModel, sourceChat: widget.sourceChat,)));
       },
       child: Column(
         children: [

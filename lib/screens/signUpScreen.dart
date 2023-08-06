@@ -113,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   setState(() {
                     loading = false;
                   });
-                  Get.to(HomeScreen());
+                  //Get.to(HomeScreen());
                 }).onError((error, stackTrace) {
                   setState(() {
                     loading = false;

@@ -12,8 +12,10 @@ import 'package:wave_chat/model/chatModel.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class IndivisualPage extends StatefulWidget {
-  IndivisualPage({super.key, required this.chatModel});
+  IndivisualPage(
+      {super.key, required this.chatModel, required this.sourceChat});
   final ChatModel chatModel;
+  final ChatModel sourceChat;
 
   @override
   State<IndivisualPage> createState() => _IndivisualPageState();
@@ -23,7 +25,7 @@ class _IndivisualPageState extends State<IndivisualPage> {
   final messageController = TextEditingController();
   bool show = false;
   FocusNode focusNode = FocusNode();
-  late IO.Socket socket;
+  IO.Socket? socket;
   String? id;
   bool sendButton = false;
 
@@ -40,17 +42,19 @@ class _IndivisualPageState extends State<IndivisualPage> {
     });
   }
 
+  // Connects socket client to the server
   void connect() {
-    socket = IO.io("http://192.168.154.216:6000", <String, dynamic>{
+    socket = IO.io("http://192.168.109.216:3800", <String, dynamic>{
       "transports": ["websocket"],
       "autoConnect": false,
     });
-    socket.connect();
-    socket.emit("test", "Hello Suraj");
+    socket!.connect();
+    socket!.emit("signin", widget.sourceChat.id);
+    // socket!.onConnect((data) => print("Connected"));
     // socket.onconnect((_) {
     //   print("Connected");
     // });
-    print(socket.connected);
+    print(socket!.connected);
   }
 
   @override
@@ -210,8 +214,8 @@ class _IndivisualPageState extends State<IndivisualPage> {
                                       setState(() {
                                         sendButton = true;
                                       });
-                                    }else{
-                                       setState(() {
+                                    } else {
+                                      setState(() {
                                         sendButton = false;
                                       });
                                     }
@@ -295,10 +299,9 @@ class _IndivisualPageState extends State<IndivisualPage> {
                                 child: IconButton(
                                     onPressed: () {},
                                     icon: Icon(
-                                      sendButton? Icons.send: Icons.mic,
+                                      sendButton ? Icons.send : Icons.mic,
                                       color: Colors.white,
-                                    )
-                                    ),
+                                    )),
                               ),
                             ),
                           ],

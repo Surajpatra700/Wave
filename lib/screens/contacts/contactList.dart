@@ -2,8 +2,10 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:wave_chat/indivisualPage.dart';
 import 'package:wave_chat/managements/dBHelper/mongoDb.dart';
 import 'package:wave_chat/managements/entity/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class ContactList extends StatefulWidget {
 }
 
 class _ContactListState extends State<ContactList> {
+  final auth = FirebaseAuth.instance.currentUser;
   BuildListItem(UserLoginResponseEntity item) {
     return Container(
       padding: EdgeInsets.only(top: 15, left: 15, right: 15),
@@ -21,6 +24,7 @@ class _ContactListState extends State<ContactList> {
           // if (item.id != null) {
           //   controller.goChat(item);
           // }
+          
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,

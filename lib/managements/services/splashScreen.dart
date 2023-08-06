@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:wave_chat/colors/colors.dart';
 import 'package:wave_chat/homeScreen.dart';
+import 'package:wave_chat/screens/logintest.dart';
 import 'package:wave_chat/screens/signUpScreen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -45,11 +46,14 @@ class _SplashScreenState extends State<SplashScreen> {
 
 class SplashServices {
   final auth = FirebaseAuth.instance;
+
+  final login = LoginScreen();
   void control() {
     if (auth.currentUser != null) {
-      Timer(Duration(seconds: 3), () => Get.to(HomeScreen()));
+      Timer(Duration(seconds: 3), () => Get.to(LoginScreen()));
     } else {
       Get.to(SignUpScreen());
+      //Get.to(LoginScreen());
     }
   }
 }
